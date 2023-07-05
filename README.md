@@ -1,8 +1,16 @@
 # LangChain Prompts
 
 Some examples of prompts from the [LangChain](https://github.com/hwchase17/langchain) codebase.
-Note: Not comprehensive, and may contain truncated strings where the string concatenated with a `+`.
-## [/retrievers/document_compressors/chain_filter_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//retrievers/document_compressors/chain_filter_prompt.py#L2)
+
+- I find viewing these makes it much easier to see what each chain is doing under the hood - and find new useful tools within the codebase.
+- You can also see some great examples of prompt engineering.
+- Inputs to the prompts are represented by e.g. `{user_input}`.
+
+Note: Simple heuristics were used to find prompt-like strings, so this will miss any shorter prompts and contains false positives. 
+Due to the way we extract strings, this may contain only the first part of any strings where the original source string was concatenated with a `+`.
+
+## Examples:
+### [/retrievers/document_compressors/chain_filter_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//retrievers/document_compressors/chain_filter_prompt.py#L2)
 ```python
 	prompt_template = """Given the following question and context, return YES if the context is relevant to the question and NO if it isn't.
 	
@@ -15,7 +23,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/retrievers/document_compressors/chain_extract_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//retrievers/document_compressors/chain_extract_prompt.py#L2)
+### [/retrievers/document_compressors/chain_extract_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//retrievers/document_compressors/chain_extract_prompt.py#L2)
 ```python
 	prompt_template = """Given the following question and context, extract any part of the context *AS IS* that is relevant to answer the question. If none of the context is relevant return {no_output_str}. 
 	
@@ -30,7 +38,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/tools/spark_sql/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/spark_sql/prompt.py#L2)
+### [/tools/spark_sql/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/spark_sql/prompt.py#L2)
 ```python
 	QUERY_CHECKER = """
 	{query}
@@ -48,7 +56,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/tools/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/sql_database/prompt.py#L2)
+### [/tools/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/sql_database/prompt.py#L2)
 ```python
 	QUERY_CHECKER = """
 	{query}
@@ -66,7 +74,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/tools/jira/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/jira/prompt.py#L2)
+### [/tools/jira/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/jira/prompt.py#L2)
 ```python
 	JIRA_ISSUE_CREATE_PROMPT = """
 	    This tool is a wrapper around atlassian-python-api's Jira issue_create API, useful when you need to create a Jira issue. 
@@ -77,7 +85,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/tools/jira/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/jira/prompt.py#L24)
+### [/tools/jira/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/jira/prompt.py#L24)
 ```python
 	JIRA_CATCH_ALL_PROMPT = """
 	    This tool is a wrapper around atlassian-python-api's Jira API.
@@ -93,7 +101,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/tools/jira/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/jira/prompt.py#L36)
+### [/tools/jira/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/jira/prompt.py#L36)
 ```python
 	JIRA_CONFLUENCE_PAGE_CREATE_PROMPT = """This tool is a wrapper around atlassian-python-api's Confluence 
 	atlassian-python-api API, useful when you need to create a Confluence page. The input to this tool is a dictionary 
@@ -104,7 +112,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/tools/powerbi/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/powerbi/prompt.py#L2)
+### [/tools/powerbi/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/powerbi/prompt.py#L2)
 ```python
 	QUESTION_TO_QUERY = """
 	Answer the question below with a DAX query that can be sent to Power BI. DAX queries have a simple syntax comprised of just one required keyword, EVALUATE, and several optional keywords: ORDER BY, START AT, DEFINE, MEASURE, VAR, TABLE, and COLUMN. Each keyword defines a statement used for the duration of the query. Any time < or > are used in the text below it means that those values need to be replaced by table, columns or other things. If the question is not something you can answer with a DAX query, reply with "I cannot answer this" and the question will be escalated to a human.
@@ -154,7 +162,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/tools/graphql/tool.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/graphql/tool.py#L18)
+### [/tools/graphql/tool.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//tools/graphql/tool.py#L18)
 ```python
 	    description = """\
 	    Input to this tool is a detailed and correct GraphQL query, output is a result from the API.
@@ -167,7 +175,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/memory/entity.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/entity.py#L184)
+### [/memory/entity.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/entity.py#L184)
 ```python
 	        create_table_query = f"""
 	            CREATE TABLE IF NOT EXISTS {self.full_table_name} (
@@ -178,7 +186,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/memory/entity.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/entity.py#L194)
+### [/memory/entity.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/entity.py#L194)
 ```python
 	        query = f"""
 	            SELECT value
@@ -188,7 +196,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/memory/entity.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/entity.py#L209)
+### [/memory/entity.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/entity.py#L209)
 ```python
 	        query = f"""
 	            INSERT OR REPLACE INTO {self.full_table_name} (key, value)
@@ -197,7 +205,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/memory/entity.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/entity.py#L225)
+### [/memory/entity.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/entity.py#L225)
 ```python
 	        query = f"""
 	            SELECT 1
@@ -208,7 +216,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/memory/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/prompt.py#L4)
+### [/memory/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/prompt.py#L4)
 ```python
 	_DEFAULT_ENTITY_MEMORY_CONVERSATION_TEMPLATE = """You are an assistant to a human, powered by a large language model trained by OpenAI.
 	
@@ -229,7 +237,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/memory/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/prompt.py#L26)
+### [/memory/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/prompt.py#L26)
 ```python
 	_DEFAULT_SUMMARIZER_TEMPLATE = """Progressively summarize the lines of conversation provided, adding onto the previous summary returning a new summary.
 	
@@ -255,7 +263,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/memory/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/prompt.py#L51)
+### [/memory/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/prompt.py#L51)
 ```python
 	_DEFAULT_ENTITY_EXTRACTION_TEMPLATE = """You are an AI assistant reading the transcript of a conversation between an AI and a human. Extract all of the proper nouns from the last line of conversation. As a guideline, a proper noun is generally capitalized. You should definitely extract all names and places.
 	
@@ -294,7 +302,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/memory/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/prompt.py#L89)
+### [/memory/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/prompt.py#L89)
 ```python
 	_DEFAULT_ENTITY_SUMMARIZATION_TEMPLATE = """You are an AI assistant helping a human keep track of facts about relevant people, places, and concepts in their life. Update the summary of the provided entity in the "Entity" section based on the last line of your conversation with the human. If you are writing the summary for the first time, return a single sentence.
 	The update should only include facts that are relayed in the last line of conversation about the provided entity, and should only contain facts about the provided entity.
@@ -316,7 +324,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/memory/chat_message_histories/postgres.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/chat_message_histories/postgres.py#L41)
+### [/memory/chat_message_histories/postgres.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//memory/chat_message_histories/postgres.py#L41)
 ```python
 	        create_table_query = f"""CREATE TABLE IF NOT EXISTS {self.table_name} (
 	            id SERIAL PRIMARY KEY,
@@ -326,7 +334,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/callbacks/mlflow_callback.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//callbacks/mlflow_callback.py#L105)
+### [/callbacks/mlflow_callback.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//callbacks/mlflow_callback.py#L105)
 ```python
 	    return f"""
 	    <p style="color:black;">{formatted_prompt}:</p>
@@ -339,7 +347,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/self_ask_with_search/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/self_ask_with_search/prompt.py#L4)
+### [/agents/self_ask_with_search/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/self_ask_with_search/prompt.py#L4)
 ```python
 	_DEFAULT_TEMPLATE = """Question: Who lived longer, Muhammad Ali or Alan Turing?
 	Are follow up questions needed here: Yes.
@@ -382,7 +390,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/chat/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/chat/prompt.py#L3)
+### [/agents/chat/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/chat/prompt.py#L3)
 ```python
 	FORMAT_INSTRUCTIONS = """The way you use the tools is by specifying a json blob.
 	Specifically, this json should have a `action` key (with the name of the tool to use) and a `action_input` key (with the input to the tool going here).
@@ -413,7 +421,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/mrkl/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/mrkl/prompt.py#L3)
+### [/agents/mrkl/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/mrkl/prompt.py#L3)
 ```python
 	FORMAT_INSTRUCTIONS = """Use the following format:
 	
@@ -428,7 +436,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/structured_chat/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/structured_chat/prompt.py#L3)
+### [/agents/structured_chat/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/structured_chat/prompt.py#L3)
 ```python
 	FORMAT_INSTRUCTIONS = """Use a json blob to specify a tool by providing an action key (tool name) and an action_input key (tool input).
 	
@@ -464,7 +472,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/conversational_chat/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/conversational_chat/prompt.py#L10)
+### [/agents/conversational_chat/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/conversational_chat/prompt.py#L10)
 ```python
 	FORMAT_INSTRUCTIONS = """RESPONSE FORMAT INSTRUCTIONS
 	----------------------------
@@ -494,7 +502,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/conversational_chat/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/conversational_chat/prompt.py#L36)
+### [/agents/conversational_chat/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/conversational_chat/prompt.py#L36)
 ```python
 	SUFFIX = """TOOLS
 	------
@@ -512,7 +520,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/conversational_chat/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/conversational_chat/prompt.py#L50)
+### [/agents/conversational_chat/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/conversational_chat/prompt.py#L50)
 ```python
 	TEMPLATE_TOOL_RESPONSE = """TOOL RESPONSE: 
 	---------------------
@@ -525,7 +533,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/spark_sql/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/spark_sql/prompt.py#L3)
+### [/agents/agent_toolkits/spark_sql/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/spark_sql/prompt.py#L3)
 ```python
 	SQL_PREFIX = """You are an agent designed to interact with Spark SQL.
 	Given an input question, create a syntactically correct Spark SQL query to run, then look at the results of the query and return the answer.
@@ -543,7 +551,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/spark_sql/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/spark_sql/prompt.py#L17)
+### [/agents/agent_toolkits/spark_sql/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/spark_sql/prompt.py#L17)
 ```python
 	SQL_SUFFIX = """Begin!
 	
@@ -553,7 +561,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L6)
+### [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L6)
 ```python
 	API_PLANNER_PROMPT = """You are a planner that plans a sequence of API calls to assist with user queries against an API.
 	
@@ -613,13 +621,13 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L62)
+### [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L62)
 ```python
 	API_PLANNER_TOOL_DESCRIPTION = f"Can be used to generate the right API calls to assist with a user query, like {API_PLANNER_TOOL_NAME}(query). Should always be called before trying to call the API controller."
 	
 ```
 
-## [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L65)
+### [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L65)
 ```python
 	API_CONTROLLER_PROMPT = """You are an agent that gets a sequence of API calls and given their documentation, should execute them and return the final response.
 	If you cannot complete them and run into issues, you should explain the issue. If you're able to resolve an API call, you can retry the API call. When interacting with API objects, you should extract ids for inputs to other API calls but ids and names for outputs returned to the User.
@@ -655,7 +663,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L102)
+### [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L102)
 ```python
 	API_ORCHESTRATOR_PROMPT = """You are an agent that assists with user queries against API, things like querying information or creating resources.
 	Some user queries can be resolved in a single API call, particularly if you can find appropriate params from the OpenAPI spec; though some require several API calls.
@@ -702,7 +710,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L155)
+### [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L155)
 ```python
 	    template="""Here is an API response:\n\n{response}\n\n====
 	Your task is to extract some information according to these instructions: {instructions}
@@ -713,7 +721,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L172)
+### [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L172)
 ```python
 	    template="""Here is an API response:\n\n{response}\n\n====
 	Your task is to extract some information according to these instructions: {instructions}
@@ -724,7 +732,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L189)
+### [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L189)
 ```python
 	    template="""Here is an API response:\n\n{response}\n\n====
 	Your task is to extract some information according to these instructions: {instructions}
@@ -735,7 +743,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L206)
+### [/agents/agent_toolkits/openapi/planner_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/planner_prompt.py#L206)
 ```python
 	    template="""Here is an API response:\n\n{response}\n\n====
 	Your task is to extract some information according to these instructions: {instructions}
@@ -746,7 +754,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/openapi/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/prompt.py#L19)
+### [/agents/agent_toolkits/openapi/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/openapi/prompt.py#L19)
 ```python
 	OPENAPI_SUFFIX = """Begin!
 	
@@ -756,7 +764,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/json/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/json/prompt.py#L21)
+### [/agents/agent_toolkits/json/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/json/prompt.py#L21)
 ```python
 	JSON_SUFFIX = """Begin!"
 	
@@ -766,7 +774,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/powerbi/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/powerbi/prompt.py#L5)
+### [/agents/agent_toolkits/powerbi/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/powerbi/prompt.py#L5)
 ```python
 	POWERBI_PREFIX = """You are an agent designed to help users interact with a PowerBI Dataset.
 	
@@ -777,7 +785,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/powerbi/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/powerbi/prompt.py#L12)
+### [/agents/agent_toolkits/powerbi/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/powerbi/prompt.py#L12)
 ```python
 	POWERBI_SUFFIX = """Begin!
 	
@@ -787,7 +795,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/powerbi/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/powerbi/prompt.py#L18)
+### [/agents/agent_toolkits/powerbi/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/powerbi/prompt.py#L18)
 ```python
 	POWERBI_CHAT_PREFIX = """Assistant is a large language model built to help users interact with a PowerBI Dataset.
 	
@@ -798,7 +806,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/powerbi/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/powerbi/prompt.py#L25)
+### [/agents/agent_toolkits/powerbi/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/powerbi/prompt.py#L25)
 ```python
 	POWERBI_CHAT_SUFFIX = """TOOLS
 	------
@@ -817,7 +825,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/pandas/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/pandas/prompt.py#L7)
+### [/agents/agent_toolkits/pandas/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/pandas/prompt.py#L7)
 ```python
 	MULTI_DF_PREFIX = """
 	You are working with {num_dfs} pandas dataframes in Python named df1, df2, etc. You 
@@ -825,7 +833,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/pandas/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/pandas/prompt.py#L16)
+### [/agents/agent_toolkits/pandas/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/pandas/prompt.py#L16)
 ```python
 	SUFFIX_WITH_DF = """
 	This is the result of `print(df.head())`:
@@ -837,7 +845,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/pandas/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/pandas/prompt.py#L24)
+### [/agents/agent_toolkits/pandas/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/pandas/prompt.py#L24)
 ```python
 	SUFFIX_WITH_MULTI_DF = """
 	This is the result of `print(df.head())` for each dataframe:
@@ -849,7 +857,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/sql/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/sql/prompt.py#L3)
+### [/agents/agent_toolkits/sql/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/sql/prompt.py#L3)
 ```python
 	SQL_PREFIX = """You are an agent designed to interact with a SQL database.
 	Given an input question, create a syntactically correct {dialect} query to run, then look at the results of the query and return the answer.
@@ -867,7 +875,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/agent_toolkits/sql/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/sql/prompt.py#L17)
+### [/agents/agent_toolkits/sql/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/agent_toolkits/sql/prompt.py#L17)
 ```python
 	SQL_SUFFIX = """Begin!
 	
@@ -877,7 +885,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/agents/conversational/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/conversational/prompt.py#L14)
+### [/agents/conversational/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//agents/conversational/prompt.py#L14)
 ```python
 	FORMAT_INSTRUCTIONS = """To use a tool, please use the following format:
 	
@@ -897,7 +905,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/vectorstores/clickhouse.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/clickhouse.py#L183)
+### [/vectorstores/clickhouse.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/clickhouse.py#L183)
 ```python
 	        self.schema = f"""\
 	CREATE TABLE IF NOT EXISTS {self.config.database}.{self.config.table}(
@@ -914,7 +922,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/vectorstores/clickhouse.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/clickhouse.py#L224)
+### [/vectorstores/clickhouse.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/clickhouse.py#L224)
 ```python
 	        i_str = f"""
 	                INSERT INTO TABLE 
@@ -925,7 +933,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/vectorstores/clickhouse.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/clickhouse.py#L357)
+### [/vectorstores/clickhouse.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/clickhouse.py#L357)
 ```python
 	        q_str = f"""
 	            SELECT {self.config.column_map['document']}, 
@@ -939,7 +947,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/vectorstores/myscale.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/myscale.py#L162)
+### [/vectorstores/myscale.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/myscale.py#L162)
 ```python
 	        schema_ = f"""
 	            CREATE TABLE IF NOT EXISTS {self.config.database}.{self.config.table}(
@@ -957,7 +965,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/vectorstores/myscale.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/myscale.py#L201)
+### [/vectorstores/myscale.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/myscale.py#L201)
 ```python
 	        i_str = f"""
 	                INSERT INTO TABLE 
@@ -968,7 +976,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/vectorstores/myscale.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/myscale.py#L329)
+### [/vectorstores/myscale.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/myscale.py#L329)
 ```python
 	        q_str = f"""
 	            SELECT {self.config.column_map['text']}, 
@@ -982,14 +990,14 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/vectorstores/rocksetdb.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/rocksetdb.py#L263)
+### [/vectorstores/rocksetdb.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/rocksetdb.py#L263)
 ```python
 	                    ), "page content stored in column `{}` must be of type `str`. \
 	                        But found: `{}`".format(
 	
 ```
 
-## [/vectorstores/rocksetdb.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/rocksetdb.py#L300)
+### [/vectorstores/rocksetdb.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/rocksetdb.py#L300)
 ```python
 	        return f"""\
 	SELECT * EXCEPT({self._embedding_key}), {distance_str}
@@ -1001,7 +1009,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/vectorstores/hologres.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/hologres.py#L47)
+### [/vectorstores/hologres.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/hologres.py#L47)
 ```python
 	            + """, 'proxima_vectors', 
 	'{"embedding":{"algorithm":"Graph",
@@ -1012,7 +1020,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/vectorstores/analyticdb.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/analyticdb.py#L271)
+### [/vectorstores/analyticdb.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/analyticdb.py#L271)
 ```python
 	        sql_query = f"""
 	            SELECT *, l2_distance(embedding, :embedding) as distance
@@ -1024,7 +1032,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/vectorstores/starrocks.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/starrocks.py#L178)
+### [/vectorstores/starrocks.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/starrocks.py#L178)
 ```python
 	        self.schema = f"""\
 	CREATE TABLE IF NOT EXISTS {self.config.database}.{self.config.table}(    
@@ -1038,7 +1046,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/vectorstores/starrocks.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/starrocks.py#L226)
+### [/vectorstores/starrocks.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/starrocks.py#L226)
 ```python
 	        i_str = f"""
 	                INSERT INTO
@@ -1049,7 +1057,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/vectorstores/starrocks.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/starrocks.py#L360)
+### [/vectorstores/starrocks.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//vectorstores/starrocks.py#L360)
 ```python
 	        q_str = f"""
 	            SELECT {self.config.column_map['document']}, 
@@ -1064,7 +1072,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/output_parsers/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//output_parsers/prompts.py#L4)
+### [/output_parsers/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//output_parsers/prompts.py#L4)
 ```python
 	NAIVE_FIX = """Instructions:
 	--------------
@@ -1085,7 +1093,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/output_parsers/retry.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//output_parsers/retry.py#L15)
+### [/output_parsers/retry.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//output_parsers/retry.py#L15)
 ```python
 	NAIVE_COMPLETION_RETRY = """Prompt:
 	{prompt}
@@ -1097,7 +1105,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/output_parsers/retry.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//output_parsers/retry.py#L23)
+### [/output_parsers/retry.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//output_parsers/retry.py#L23)
 ```python
 	NAIVE_COMPLETION_RETRY_WITH_ERROR = """Prompt:
 	{prompt}
@@ -1110,7 +1118,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/output_parsers/format_instructions.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//output_parsers/format_instructions.py#L3)
+### [/output_parsers/format_instructions.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//output_parsers/format_instructions.py#L3)
 ```python
 	STRUCTURED_FORMAT_INSTRUCTIONS = """The output should be a markdown code snippet formatted in the following schema, including the leading and trailing "```json" and "```":
 	
@@ -1122,7 +1130,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/output_parsers/format_instructions.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//output_parsers/format_instructions.py#L11)
+### [/output_parsers/format_instructions.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//output_parsers/format_instructions.py#L11)
 ```python
 	PYDANTIC_FORMAT_INSTRUCTIONS = """The output should be formatted as a JSON instance that conforms to the JSON schema below.
 	
@@ -1136,14 +1144,14 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/output_parsers/datetime.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//output_parsers/datetime.py#L37)
+### [/output_parsers/datetime.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//output_parsers/datetime.py#L37)
 ```python
 	        return f"""Write a datetime string that matches the 
 	            following pattern: "{self.format}". Examples: {examples}"""
 	
 ```
 
-## [/evaluation/agents/trajectory_eval_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/agents/trajectory_eval_prompt.py#L13)
+### [/evaluation/agents/trajectory_eval_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/agents/trajectory_eval_prompt.py#L13)
 ```python
 	EVAL_TEMPLATE = """An AI language model has been given access to the following set of tools to help answer a user's question.
 	
@@ -1171,7 +1179,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/evaluation/qa/eval_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/qa/eval_prompt.py#L4)
+### [/evaluation/qa/eval_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/qa/eval_prompt.py#L4)
 ```python
 	template = """You are a teacher grading a quiz.
 	You are given a question, the student's answer, and the true answer, and are asked to score the student answer as either CORRECT or INCORRECT.
@@ -1191,7 +1199,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/evaluation/qa/eval_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/qa/eval_prompt.py#L23)
+### [/evaluation/qa/eval_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/qa/eval_prompt.py#L23)
 ```python
 	context_template = """You are a teacher grading a quiz.
 	You are given a question, the context the question is about, and the student's answer. You are asked to score the student's answer as either CORRECT or INCORRECT, based on the context.
@@ -1211,7 +1219,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/evaluation/qa/eval_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/qa/eval_prompt.py#L43)
+### [/evaluation/qa/eval_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/qa/eval_prompt.py#L43)
 ```python
 	cot_template = """You are a teacher grading a quiz.
 	You are given a question, the context the question is about, and the student's answer. You are asked to score the student's answer as either CORRECT or INCORRECT, based on the context.
@@ -1233,7 +1241,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/evaluation/qa/eval_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/qa/eval_prompt.py#L65)
+### [/evaluation/qa/eval_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/qa/eval_prompt.py#L65)
 ```python
 	template = """You are comparing a submitted answer to an expert answer on a given SQL coding question. Here is the data:
 	[BEGIN DATA]
@@ -1249,7 +1257,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/evaluation/qa/generate_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/qa/generate_prompt.py#L5)
+### [/evaluation/qa/generate_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/qa/generate_prompt.py#L5)
 ```python
 	template = """You are a teacher coming up with questions to ask on a quiz. 
 	Given the following document, please generate a question and answer based on that document.
@@ -1269,7 +1277,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/evaluation/run_evaluators/criteria_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/run_evaluators/criteria_prompt.py#L6)
+### [/evaluation/run_evaluators/criteria_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//evaluation/run_evaluators/criteria_prompt.py#L6)
 ```python
 	template = """You are assessing a submitted answer on a given task or input based on a set of criteria. Here is the data:
 	[BEGIN DATA]
@@ -1285,7 +1293,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/document_loaders/whatsapp_chat.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//document_loaders/whatsapp_chat.py#L29)
+### [/document_loaders/whatsapp_chat.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//document_loaders/whatsapp_chat.py#L29)
 ```python
 	        message_line_regex = r"""
 	            \[?
@@ -1313,7 +1321,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/graphs/neo4j_graph.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//graphs/neo4j_graph.py#L3)
+### [/graphs/neo4j_graph.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//graphs/neo4j_graph.py#L3)
 ```python
 	node_properties_query = """
 	CALL apoc.meta.data()
@@ -1326,7 +1334,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/graphs/neo4j_graph.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//graphs/neo4j_graph.py#L12)
+### [/graphs/neo4j_graph.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//graphs/neo4j_graph.py#L12)
 ```python
 	rel_properties_query = """
 	CALL apoc.meta.data()
@@ -1338,7 +1346,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/graphs/neo4j_graph.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//graphs/neo4j_graph.py#L94)
+### [/graphs/neo4j_graph.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//graphs/neo4j_graph.py#L94)
 ```python
 	        self.schema = f"""
 	        Node properties are the following:
@@ -1351,7 +1359,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/chat_vector_db/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/chat_vector_db/prompts.py#L4)
+### [/chains/chat_vector_db/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/chat_vector_db/prompts.py#L4)
 ```python
 	_template = """Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.
 	
@@ -1362,7 +1370,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/chat_vector_db/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/chat_vector_db/prompts.py#L12)
+### [/chains/chat_vector_db/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/chat_vector_db/prompts.py#L12)
 ```python
 	prompt_template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
 	
@@ -1373,7 +1381,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/hyde/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/hyde/prompts.py#L34)
+### [/chains/hyde/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/hyde/prompts.py#L34)
 ```python
 	mr_tydi_template = """Please write a passage in Swahili/Korean/Japanese/Bengali to answer the question in detail.
 	Question: {QUESTION}
@@ -1381,7 +1389,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/question_answering/map_reduce_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/map_reduce_prompt.py#L10)
+### [/chains/question_answering/map_reduce_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/map_reduce_prompt.py#L10)
 ```python
 	question_prompt_template = """Use the following portion of a long document to see if any of the text is relevant to answer the question. 
 	Return any relevant text verbatim.
@@ -1391,7 +1399,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/question_answering/map_reduce_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/map_reduce_prompt.py#L18)
+### [/chains/question_answering/map_reduce_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/map_reduce_prompt.py#L18)
 ```python
 	system_template = """Use the following portion of a long document to see if any of the text is relevant to answer the question. 
 	Return any relevant text verbatim.
@@ -1400,7 +1408,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/question_answering/map_reduce_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/map_reduce_prompt.py#L33)
+### [/chains/question_answering/map_reduce_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/map_reduce_prompt.py#L33)
 ```python
 	combine_prompt_template = """Given the following extracted parts of a long document and a question, create a final answer. 
 	If you don't know the answer, just say that you don't know. Don't try to make up an answer.
@@ -1435,7 +1443,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/question_answering/map_reduce_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/map_reduce_prompt.py#L67)
+### [/chains/question_answering/map_reduce_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/map_reduce_prompt.py#L67)
 ```python
 	system_template = """Given the following extracted parts of a long document and a question, create a final answer. 
 	If you don't know the answer, just say that you don't know. Don't try to make up an answer.
@@ -1444,7 +1452,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/question_answering/map_rerank_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/map_rerank_prompt.py#L10)
+### [/chains/question_answering/map_rerank_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/map_rerank_prompt.py#L10)
 ```python
 	prompt_template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
 	
@@ -1501,7 +1509,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/question_answering/stuff_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/stuff_prompt.py#L10)
+### [/chains/question_answering/stuff_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/stuff_prompt.py#L10)
 ```python
 	prompt_template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
 	
@@ -1512,7 +1520,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/question_answering/stuff_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/stuff_prompt.py#L20)
+### [/chains/question_answering/stuff_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/question_answering/stuff_prompt.py#L20)
 ```python
 	system_template = """Use the following pieces of context to answer the users question. 
 	If you don't know the answer, just say that you don't know, don't try to make up an answer.
@@ -1521,7 +1529,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/openai_functions/extraction.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/openai_functions/extraction.py#L34)
+### [/chains/openai_functions/extraction.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/openai_functions/extraction.py#L34)
 ```python
 	_EXTRACTION_TEMPLATE = """Extract and save the relevant entities mentioned\
 	 in the following passage together with their properties.
@@ -1532,7 +1540,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L11)
+### [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L11)
 ```python
 	_DEFAULT_TEMPLATE = """Given an input question, first create a syntactically correct {dialect} query to run, then look at the results of the query and return the answer. Unless the user specifies in his question a specific number of examples he wishes to obtain, always limit your query to at most {top_k} results. You can order the results by a relevant column to return the most interesting examples in the database.
 	
@@ -1551,7 +1559,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L32)
+### [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L32)
 ```python
 	_DECIDER_TEMPLATE = """Given the below input question and list of potential tables, output a comma separated list of the table names that may be necessary to answer this question.
 	
@@ -1563,7 +1571,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L45)
+### [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L45)
 ```python
 	_duckdb_prompt = """You are a DuckDB expert. Given an input question, first create a syntactically correct DuckDB query to run, then look at the results of the query and return the answer to the input question.
 	Unless the user specifies in the question a specific number of examples to obtain, query for at most {top_k} results using the LIMIT clause as per DuckDB. You can order the results to return the most informative data in the database.
@@ -1582,7 +1590,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L65)
+### [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L65)
 ```python
 	_googlesql_prompt = """You are a GoogleSQL expert. Given an input question, first create a syntactically correct GoogleSQL query to run, then look at the results of the query and return the answer to the input question.
 	Unless the user specifies in the question a specific number of examples to obtain, query for at most {top_k} results using the LIMIT clause as per GoogleSQL. You can order the results to return the most informative data in the database.
@@ -1601,7 +1609,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L86)
+### [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L86)
 ```python
 	_mssql_prompt = """You are an MS SQL expert. Given an input question, first create a syntactically correct MS SQL query to run, then look at the results of the query and return the answer to the input question.
 	Unless the user specifies in the question a specific number of examples to obtain, query for at most {top_k} results using the TOP clause as per MS SQL. You can order the results to return the most informative data in the database.
@@ -1620,7 +1628,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L107)
+### [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L107)
 ```python
 	_mysql_prompt = """You are a MySQL expert. Given an input question, first create a syntactically correct MySQL query to run, then look at the results of the query and return the answer to the input question.
 	Unless the user specifies in the question a specific number of examples to obtain, query for at most {top_k} results using the LIMIT clause as per MySQL. You can order the results to return the most informative data in the database.
@@ -1639,7 +1647,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L128)
+### [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L128)
 ```python
 	_mariadb_prompt = """You are a MariaDB expert. Given an input question, first create a syntactically correct MariaDB query to run, then look at the results of the query and return the answer to the input question.
 	Unless the user specifies in the question a specific number of examples to obtain, query for at most {top_k} results using the LIMIT clause as per MariaDB. You can order the results to return the most informative data in the database.
@@ -1658,7 +1666,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L149)
+### [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L149)
 ```python
 	_oracle_prompt = """You are an Oracle SQL expert. Given an input question, first create a syntactically correct Oracle SQL query to run, then look at the results of the query and return the answer to the input question.
 	Unless the user specifies in the question a specific number of examples to obtain, query for at most {top_k} results using the FETCH FIRST n ROWS ONLY clause as per Oracle SQL. You can order the results to return the most informative data in the database.
@@ -1677,7 +1685,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L170)
+### [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L170)
 ```python
 	_postgres_prompt = """You are a PostgreSQL expert. Given an input question, first create a syntactically correct PostgreSQL query to run, then look at the results of the query and return the answer to the input question.
 	Unless the user specifies in the question a specific number of examples to obtain, query for at most {top_k} results using the LIMIT clause as per PostgreSQL. You can order the results to return the most informative data in the database.
@@ -1696,7 +1704,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L191)
+### [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L191)
 ```python
 	_sqlite_prompt = """You are a SQLite expert. Given an input question, first create a syntactically correct SQLite query to run, then look at the results of the query and return the answer to the input question.
 	Unless the user specifies in the question a specific number of examples to obtain, query for at most {top_k} results using the LIMIT clause as per SQLite. You can order the results to return the most informative data in the database.
@@ -1715,7 +1723,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L211)
+### [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L211)
 ```python
 	_clickhouse_prompt = """You are a ClickHouse expert. Given an input question, first create a syntactically correct Clic query to run, then look at the results of the query and return the answer to the input question.
 	Unless the user specifies in the question a specific number of examples to obtain, query for at most {top_k} results using the LIMIT clause as per ClickHouse. You can order the results to return the most informative data in the database.
@@ -1734,7 +1742,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L231)
+### [/chains/sql_database/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/sql_database/prompt.py#L231)
 ```python
 	_prestodb_prompt = """You are a PrestoDB expert. Given an input question, first create a syntactically correct PrestoDB query to run, then look at the results of the query and return the answer to the input question.
 	Unless the user specifies in the question a specific number of examples to obtain, query for at most {top_k} results using the LIMIT clause as per PrestoDB. You can order the results to return the most informative data in the database.
@@ -1753,7 +1761,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/retrieval_qa/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/retrieval_qa/prompt.py#L4)
+### [/chains/retrieval_qa/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/retrieval_qa/prompt.py#L4)
 ```python
 	prompt_template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
 	
@@ -1764,7 +1772,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/qa_with_sources/map_reduce_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/qa_with_sources/map_reduce_prompt.py#L4)
+### [/chains/qa_with_sources/map_reduce_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/qa_with_sources/map_reduce_prompt.py#L4)
 ```python
 	question_prompt_template = """Use the following portion of a long document to see if any of the text is relevant to answer the question. 
 	Return any relevant text verbatim.
@@ -1774,7 +1782,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/qa_with_sources/map_reduce_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/qa_with_sources/map_reduce_prompt.py#L13)
+### [/chains/qa_with_sources/map_reduce_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/qa_with_sources/map_reduce_prompt.py#L13)
 ```python
 	combine_prompt_template = """Given the following extracted parts of a long document and a question, create a final answer with references ("SOURCES"). 
 	If you don't know the answer, just say that you don't know. Don't try to make up an answer.
@@ -1814,7 +1822,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/qa_with_sources/stuff_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/qa_with_sources/stuff_prompt.py#L4)
+### [/chains/qa_with_sources/stuff_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/qa_with_sources/stuff_prompt.py#L4)
 ```python
 	template = """Given the following extracted parts of a long document and a question, create a final answer with references ("SOURCES"). 
 	If you don't know the answer, just say that you don't know. Don't try to make up an answer.
@@ -1854,7 +1862,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/graph_qa/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/graph_qa/prompts.py#L4)
+### [/chains/graph_qa/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/graph_qa/prompts.py#L4)
 ```python
 	_DEFAULT_ENTITY_EXTRACTION_TEMPLATE = """Extract all entities from the following text. As a guideline, a proper noun is generally capitalized. You should definitely extract all names and places.
 	
@@ -1877,7 +1885,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/graph_qa/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/graph_qa/prompts.py#L26)
+### [/chains/graph_qa/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/graph_qa/prompts.py#L26)
 ```python
 	prompt_template = """Use the following knowledge triplets to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
 	
@@ -1888,7 +1896,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/graph_qa/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/graph_qa/prompts.py#L36)
+### [/chains/graph_qa/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/graph_qa/prompts.py#L36)
 ```python
 	CYPHER_GENERATION_TEMPLATE = """Task:Generate Cypher statement to query a graph database.
 	Instructions:
@@ -1905,7 +1913,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/graph_qa/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/graph_qa/prompts.py#L92)
+### [/chains/graph_qa/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/graph_qa/prompts.py#L92)
 ```python
 	CYPHER_QA_TEMPLATE = """You are an assistant that helps to form nice and human understandable answers.
 	The information part contains the provided information that you must use to construct an answer.
@@ -1920,7 +1928,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/qa_generation/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/qa_generation/prompt.py#L10)
+### [/chains/qa_generation/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/qa_generation/prompt.py#L10)
 ```python
 	templ1 = """You are a smart assistant designed to help high school teachers come up with reading comprehension questions.
 	Given a piece of text, you must come up with a question and answer pair that can be used to test a student's reading comprehension abilities.
@@ -1937,7 +1945,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/qa_generation/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/qa_generation/prompt.py#L22)
+### [/chains/qa_generation/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/qa_generation/prompt.py#L22)
 ```python
 	templ2 = """Please come up with a question/answer pair, in the specified JSON format, for the following text:
 	----------------
@@ -1945,7 +1953,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/qa_generation/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/qa_generation/prompt.py#L31)
+### [/chains/qa_generation/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/qa_generation/prompt.py#L31)
 ```python
 	templ = """You are a smart assistant designed to help high school teachers come up with reading comprehension questions.
 	Given a piece of text, you must come up with a question and answer pair that can be used to test a student's reading comprehension abilities.
@@ -1965,7 +1973,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/constitutional_ai/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/constitutional_ai/prompts.py#L8)
+### [/chains/constitutional_ai/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/constitutional_ai/prompts.py#L8)
 ```python
 	    template="""Human: {input_prompt}
 	
@@ -1977,7 +1985,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/constitutional_ai/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/constitutional_ai/prompts.py#L64)
+### [/chains/constitutional_ai/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/constitutional_ai/prompts.py#L64)
 ```python
 	    suffix="""Human: {input_prompt}
 	Model: {output_from_model}
@@ -1988,7 +1996,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/constitutional_ai/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/constitutional_ai/prompts.py#L78)
+### [/chains/constitutional_ai/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/constitutional_ai/prompts.py#L78)
 ```python
 	    suffix="""Human: {input_prompt}
 	
@@ -2008,7 +2016,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/natbot/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/natbot/prompt.py#L4)
+### [/chains/natbot/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/natbot/prompt.py#L4)
 ```python
 	_PROMPT_TEMPLATE = """
 	You are an agents controlling a browser. You are given:
@@ -2150,7 +2158,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/natbot/crawler.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/natbot/crawler.py#L85)
+### [/chains/natbot/crawler.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/natbot/crawler.py#L85)
 ```python
 	        js = """
 			links = document.getElementsByTagName("a");
@@ -2161,7 +2169,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/api/tmdb_docs.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/api/tmdb_docs.py#L2)
+### [/chains/api/tmdb_docs.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/api/tmdb_docs.py#L2)
 ```python
 	TMDB_DOCS = """API documentation:
 	Endpoint: https://api.themoviedb.org/3
@@ -2202,7 +2210,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/api/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/api/prompt.py#L4)
+### [/chains/api/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/api/prompt.py#L4)
 ```python
 	API_URL_PROMPT_TEMPLATE = """You are given the below API Documentation:
 	{api_docs}
@@ -2214,7 +2222,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/api/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/api/prompt.py#L22)
+### [/chains/api/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/api/prompt.py#L22)
 ```python
 	    + """ {api_url}
 	
@@ -2228,7 +2236,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/api/openapi/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/api/openapi/prompts.py#L2)
+### [/chains/api/openapi/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/api/openapi/prompts.py#L2)
 ```python
 	REQUEST_TEMPLATE = """You are a helpful AI Assistant. Please provide JSON arguments to agentFunc() based on the user's instructions.
 	
@@ -2267,7 +2275,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/api/openapi/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/api/openapi/prompts.py#L36)
+### [/chains/api/openapi/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/api/openapi/prompts.py#L36)
 ```python
 	RESPONSE_TEMPLATE = """You are a helpful AI assistant trained to answer user queries from API responses.
 	You attempted to call an API, which resulted in:
@@ -2294,7 +2302,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/llm_checker/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/llm_checker/prompt.py#L9)
+### [/chains/llm_checker/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/llm_checker/prompt.py#L9)
 ```python
 	_LIST_ASSERTIONS_TEMPLATE = """Here is a statement:
 	{statement}
@@ -2302,7 +2310,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/llm_checker/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/llm_checker/prompt.py#L16)
+### [/chains/llm_checker/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/llm_checker/prompt.py#L16)
 ```python
 	_CHECK_ASSERTIONS_TEMPLATE = """Here is a bullet point list of assertions:
 	{assertions}
@@ -2310,7 +2318,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/llm_checker/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/llm_checker/prompt.py#L23)
+### [/chains/llm_checker/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/llm_checker/prompt.py#L23)
 ```python
 	_REVISED_ANSWER_TEMPLATE = """{checked_assertions}
 	
@@ -2320,7 +2328,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/llm_bash/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/llm_bash/prompt.py#L10)
+### [/chains/llm_bash/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/llm_bash/prompt.py#L10)
 ```python
 	_PROMPT_TEMPLATE = """If someone asks you to perform a task, your job is to come up with a series of bash commands that will perform the task. There is no need to put "#!/bin/bash" in your answer. Make sure to reason step by step, using this format:
 	
@@ -2342,7 +2350,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/llm_math/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/llm_math/prompt.py#L4)
+### [/chains/llm_math/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/llm_math/prompt.py#L4)
 ```python
 	_PROMPT_TEMPLATE = """Translate a math problem into a expression that can be executed using Python's numexpr library. Use the output of running this code to answer the question.
 	
@@ -2383,7 +2391,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/query_constructor/parser.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/parser.py#L29)
+### [/chains/query_constructor/parser.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/parser.py#L29)
 ```python
 	GRAMMAR = """
 	    ?program: func_call
@@ -2415,7 +2423,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L4)
+### [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L4)
 ```python
 	SONG_DATA_SOURCE = """\
 	```json
@@ -2441,7 +2449,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L30)
+### [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L30)
 ```python
 	FULL_ANSWER = """\
 	```json
@@ -2455,7 +2463,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L95)
+### [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L95)
 ```python
 	EXAMPLE_PROMPT_TEMPLATE = """\
 	<< Example {i}. >>
@@ -2471,7 +2479,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L113)
+### [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L113)
 ```python
 	DEFAULT_SCHEMA = """\
 	<< Structured Request Schema >>
@@ -2514,7 +2522,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L152)
+### [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L152)
 ```python
 	SCHEMA_WITH_LIMIT = """\
 	<< Structured Request Schema >>
@@ -2559,7 +2567,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L193)
+### [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L193)
 ```python
 	DEFAULT_PREFIX = """\
 	Your goal is to structure the user's query to match the request schema provided below.
@@ -2569,7 +2577,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L199)
+### [/chains/query_constructor/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/query_constructor/prompt.py#L199)
 ```python
 	DEFAULT_SUFFIX = """\
 	<< Example {i}. >>
@@ -2589,7 +2597,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/conversational_retrieval/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/conversational_retrieval/prompts.py#L4)
+### [/chains/conversational_retrieval/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/conversational_retrieval/prompts.py#L4)
 ```python
 	_template = """Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question, in its original language.
 	
@@ -2600,7 +2608,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/conversational_retrieval/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/conversational_retrieval/prompts.py#L12)
+### [/chains/conversational_retrieval/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/conversational_retrieval/prompts.py#L12)
 ```python
 	prompt_template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
 	
@@ -2611,7 +2619,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/flare/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/flare/prompts.py#L16)
+### [/chains/flare/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/flare/prompts.py#L16)
 ```python
 	PROMPT_TEMPLATE = """\
 	Respond to the user message using any relevant context. \
@@ -2625,7 +2633,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/flare/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/flare/prompts.py#L32)
+### [/chains/flare/prompts.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/flare/prompts.py#L32)
 ```python
 	QUESTION_GENERATOR_PROMPT_TEMPLATE = """\
 	Given a user input and an existing partial response as context, \
@@ -2638,7 +2646,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/conversation/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/conversation/prompt.py#L11)
+### [/chains/conversation/prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/conversation/prompt.py#L11)
 ```python
 	DEFAULT_TEMPLATE = """The following is a friendly conversation between a human and an AI. The AI is talkative and provides lots of specific details from its context. If the AI does not know the answer to a question, it truthfully says it does not know.
 	
@@ -2649,7 +2657,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/router/multi_prompt_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/router/multi_prompt_prompt.py#L3)
+### [/chains/router/multi_prompt_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/router/multi_prompt_prompt.py#L3)
 ```python
 	MULTI_PROMPT_ROUTER_TEMPLATE = """\
 	Given a raw text input to a language model select the model prompt best suited for \
@@ -2683,7 +2691,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/chains/router/multi_retrieval_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/router/multi_retrieval_prompt.py#L3)
+### [/chains/router/multi_retrieval_prompt.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//chains/router/multi_retrieval_prompt.py#L3)
 ```python
 	MULTI_RETRIEVAL_ROUTER_TEMPLATE = """\
 	Given a query to a question answering system select the system best suited \
@@ -2716,7 +2724,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/indexes/prompts/entity_extraction.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//indexes/prompts/entity_extraction.py#L4)
+### [/indexes/prompts/entity_extraction.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//indexes/prompts/entity_extraction.py#L4)
 ```python
 	_DEFAULT_ENTITY_EXTRACTION_TEMPLATE = """You are an AI assistant reading the transcript of a conversation between an AI and a human. Extract all of the proper nouns from the last line of conversation. As a guideline, a proper noun is generally capitalized. You should definitely extract all names and places.
 	
@@ -2755,7 +2763,7 @@ Note: Not comprehensive, and may contain truncated strings where the string conc
 	
 ```
 
-## [/indexes/prompts/entity_summarization.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//indexes/prompts/entity_summarization.py#L4)
+### [/indexes/prompts/entity_summarization.py](https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain//indexes/prompts/entity_summarization.py#L4)
 ```python
 	_DEFAULT_ENTITY_SUMMARIZATION_TEMPLATE = """You are an AI assistant helping a human keep track of facts about relevant people, places, and concepts in their life. Update the summary of the provided entity in the "Entity" section based on the last line of your conversation with the human. If you are writing the summary for the first time, return a single sentence.
 	The update should only include facts that are relayed in the last line of conversation about the provided entity, and should only contain facts about the provided entity.

@@ -50,11 +50,19 @@ if __name__ == "__main__":
         f.write("""# LangChain Prompts
 
 Some examples of prompts from the [LangChain](https://github.com/hwchase17/langchain) codebase.
-Note: Not comprehensive, and may contain truncated strings where the string concatenated with a `+`.
+
+- I find viewing these makes it much easier to see what each chain is doing under the hood - and find new useful tools within the codebase.
+- You can also see some great examples of prompt engineering.
+- Inputs to the prompts are represented by e.g. `{user_input}`.
+
+Note: Simple heuristics were used to find prompt-like strings, so this will miss any shorter prompts and contains false positives. 
+Due to the way we extract strings, this may contain only the first part of any strings where the original source string was concatenated with a `+`.
+
+## Examples:
 """)
         for file_path, lineno, line, tokstr in results:
             link = file_path.replace(directory, github_url) + "#L" + str(lineno)
             file_path = file_path.replace(directory, "")
             line = line.replace('\n','\n\t')
-            f.write(f"## [{file_path}]({link.strip()})\n```python\n\t{line}\n```\n\n")
+            f.write(f"### [{file_path}]({link.strip()})\n```python\n\t{line}\n```\n\n")
     print("done")
