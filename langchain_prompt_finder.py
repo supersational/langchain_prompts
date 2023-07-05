@@ -1,3 +1,4 @@
+import requests
 import os
 import tokenize
 import langchain
@@ -35,6 +36,13 @@ def search_file(file_path):
         
 
 if __name__ == "__main__":
+    print(f'running for langchain version {langchain.__version__}')
+
+    # load commit hash from github api
+    url = f"https://api.github.com/repos/hwchase17/langchain/git/ref/tags/v{langchain.__version__}"
+    r = requests.get(url)
+    commit_sha = r.json()['object']['sha']
+    print('found corresponding release commit: ', commit_sha)
 
     github_url = "https://github.com/hwchase17/langchain/blob/master/langchain/"
     directory = os.path.dirname(langchain.__file__)
@@ -43,7 +51,7 @@ if __name__ == "__main__":
 
     # could use gh release list -R hwchase17/langchain to find associated commit
     # for now hard code to  0.216
-    github_url = "https://github.com/hwchase17/langchain/tree/d1bcc58beb8fcc5157ddb7cd03b7acf8615f9f5d/langchain/"
+    github_url = f"https://github.com/hwchase17/langchain/tree/{commit_sha}/langchain/"
 
     script_dir = os.path.dirname(os.path.realpath(__file__))
     with open(os.path.join(script_dir,'README.md'),'w') as f:
